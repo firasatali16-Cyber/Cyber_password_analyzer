@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Analyzer</title>
+<link rel="stylesheet" href="{{ url_for('static',
+filename='style.css') }}">
+</head>
+<body>
+<h1>️ Cyber Password Analyzer</h1>
+<form method="POST">
+<input type="text" name="password" placeholder="Enter password
+
+to test..." required>
+
+<button type="submit">Analyze</button>
+</form>
+{% if result %}
+<div class="result">
+<h2>Score: {{ result.score }}/5</h2>
+{% if result.suggestions %}
+<ul>
+{% for suggestion in result.suggestions %}
+<li>{{ suggestion }}</li>
+{% endfor %}
+
+</ul>
+{% else %}
+<p style="color: green;">Strong password!</p>
+{% endif %}
+</div>
+{% endif %}
+</body>
+</html>
